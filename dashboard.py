@@ -1,6 +1,4 @@
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.express as px
@@ -19,7 +17,7 @@ gender_aggregated = data.groupby('gender').agg({
 gender_aggregated.columns = ['gender', 'descriptor_count', 'sentiment_mean', 'sentiment_std']
 
 # Initialize Dash app
-app = dash.Dash(__name__)
+app = Dash(__name__)
 
 # Layout
 app.layout = html.Div([
@@ -117,6 +115,8 @@ def update_gender_wordcloud(selected_books):
         for gender in genders
     ])
 
-# Run the app
+# Expose the server for deployment
+server = app.server
+
 if __name__ == '__main__':
     app.run_server(debug=True)
