@@ -1,0 +1,8 @@
+dash
+pandas
+plotly
+spacy
+nltk
+wordcloud
+textblob
+gunicorn
